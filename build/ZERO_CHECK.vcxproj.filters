@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="G:\WokerlinLiyker\build\CMakeFiles\302578507c6b3063580ba03fe4124660\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{858813E7-14D2-31A4-99B0-F63C1EA9AC8F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
