@@ -67,6 +67,15 @@ build CMakeFiles\WokerlinLiyker_Windows.dir\src\cJSON\cJSON.c.obj: C_COMPILER__W
   TARGET_COMPILE_PDB = CMakeFiles\WokerlinLiyker_Windows.dir\
   TARGET_PDB = G:\WokerlinLiyker\WokerlinLiyker_Windows.pdb
 
+build CMakeFiles\WokerlinLiyker_Windows.dir\src\Manager\MainManager.cpp.obj: CXX_COMPILER__WokerlinLiyker_Windows_unscanned_Debug G$:\WokerlinLiyker\src\Manager\MainManager.cpp || cmake_object_order_depends_target_WokerlinLiyker_Windows
+  CONFIG = Debug
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /source-charset:utf-8 /execution-charset:utf-8 /W4
+  INCLUDES = -IG:\WokerlinLiyker\src\spdlog\include -IG:\WokerlinLiyker\src\cJSON\include -external:IF:\SDL2\cmake\..\include -external:W0
+  OBJECT_DIR = CMakeFiles\WokerlinLiyker_Windows.dir
+  OBJECT_FILE_DIR = CMakeFiles\WokerlinLiyker_Windows.dir\src\Manager
+  TARGET_COMPILE_PDB = CMakeFiles\WokerlinLiyker_Windows.dir\
+  TARGET_PDB = G:\WokerlinLiyker\WokerlinLiyker_Windows.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target WokerlinLiyker_Windows
@@ -75,7 +84,7 @@ build CMakeFiles\WokerlinLiyker_Windows.dir\src\cJSON\cJSON.c.obj: C_COMPILER__W
 #############################################
 # Link the executable G:\WokerlinLiyker\WokerlinLiyker_Windows.exe
 
-build G$:\WokerlinLiyker\WokerlinLiyker_Windows.exe: CXX_EXECUTABLE_LINKER__WokerlinLiyker_Windows_Debug CMakeFiles\WokerlinLiyker_Windows.dir\src\main.cpp.obj CMakeFiles\WokerlinLiyker_Windows.dir\src\cJSON\cJSON.c.obj | F$:\SDL2\cmake\..\lib\x64\SDL2.lib F$:\SDL2\cmake\..\lib\x64\SDL2_image.lib F$:\SDL2\cmake\..\lib\x64\SDL2_mixer.lib F$:\SDL2\cmake\..\lib\x64\SDL2_ttf.lib F$:\SDL2\cmake\..\lib\x64\SDL2main.lib
+build G$:\WokerlinLiyker\WokerlinLiyker_Windows.exe: CXX_EXECUTABLE_LINKER__WokerlinLiyker_Windows_Debug CMakeFiles\WokerlinLiyker_Windows.dir\src\main.cpp.obj CMakeFiles\WokerlinLiyker_Windows.dir\src\cJSON\cJSON.c.obj CMakeFiles\WokerlinLiyker_Windows.dir\src\Manager\MainManager.cpp.obj | F$:\SDL2\cmake\..\lib\x64\SDL2.lib F$:\SDL2\cmake\..\lib\x64\SDL2_image.lib F$:\SDL2\cmake\..\lib\x64\SDL2_mixer.lib F$:\SDL2\cmake\..\lib\x64\SDL2_ttf.lib F$:\SDL2\cmake\..\lib\x64\SDL2main.lib
   CONFIG = Debug
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
