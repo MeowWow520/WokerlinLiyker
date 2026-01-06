@@ -16,5 +16,11 @@
   "command": "E:\\MICROS~2\\2026\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IG:\\WokerlinLiyker\\src\\spdlog\\include -IG:\\WokerlinLiyker\\src\\cJSON\\include -external:IF:\\SDL2\\cmake\\..\\include -external:W0 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /source-charset:utf-8 /execution-charset:utf-8 /W4 /FoCMakeFiles\\WokerlinLiyker_Windows.dir\\src\\Manager\\MainManager.cpp.obj /FdCMakeFiles\\WokerlinLiyker_Windows.dir\\ /FS -c G:\\WokerlinLiyker\\src\\Manager\\MainManager.cpp",
   "file": "G:/WokerlinLiyker/src/Manager/MainManager.cpp",
   "output": "G:/WokerlinLiyker/build/CMakeFiles/WokerlinLiyker_Windows.dir/src/Manager/MainManager.cpp.obj"
+},
+{
+  "directory": "G:/WokerlinLiyker/build",
+  "command": "E:\\MICROS~2\\2026\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IG:\\WokerlinLiyker\\src\\spdlog\\include -IG:\\WokerlinLiyker\\src\\cJSON\\include -external:IF:\\SDL2\\cmake\\..\\include -external:W0 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /source-charset:utf-8 /execution-charset:utf-8 /W4 /FoCMakeFiles\\WokerlinLiyker_Windows.dir\\src\\Scene\\SceneMainTitle.cpp.obj /FdCMakeFiles\\WokerlinLiyker_Windows.dir\\ /FS -c G:\\WokerlinLiyker\\src\\Scene\\SceneMainTitle.cpp",
+  "file": "G:/WokerlinLiyker/src/Scene/SceneMainTitle.cpp",
+  "output": "G:/WokerlinLiyker/build/CMakeFiles/WokerlinLiyker_Windows.dir/src/Scene/SceneMainTitle.cpp.obj"
 }
 ]

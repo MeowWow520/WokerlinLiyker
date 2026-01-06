@@ -26,13 +26,32 @@ public:
 protected:
     // 关闭应用程序
     void Shutdown();
-    // 设置日志输出级别
+    /** 设置日志输出级别
+     *  @param level 日志级别
+     *  @return 设置是否成功
+     *  @note 级别包括 trace, debug, info, warn, err, critical, off
+     */
     bool SetLoggerLevel(spdlog::level::level_enum level);
-
+    /** 断言失败处理函数
+     *  @param Condition 断言条件，若为true则触发断言失败
+     *  @param Message 断言失败时的提示信息
+     */
     void AssertionFailure(bool Condition, const char* Message);
+    /** 获取当前运行状态
+     *  @return 当前是否在运行
+     */
     bool GetIsRunning() const { return IsRunning; }
+    /** 设置当前运行状态
+     *  @param running 运行状态
+     */
     void SetIsRunning(bool running) { IsRunning = running; }
+    /** 打印私有变量状态
+     *  @note 仅用于调试
+     */
     void PrintPrivateVariables() const;
+    /** SDL 事件轮询处理函数
+     *  @param Event SDL 事件对象引用
+     */
     void SDLPullEvents(SDL_Event& Event);
 
 private:

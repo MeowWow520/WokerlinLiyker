@@ -30,6 +30,8 @@ add_executable(${TARGET}
                         "src/main.cpp"
                         "src/cJSON/cJSON.c"
                         "src/Manager/MainManager.cpp"
+                        "src/Scene/SceneBaseClass.h"
+                        "src/Scene/SceneMainTitle.cpp"
                         )
 
 
