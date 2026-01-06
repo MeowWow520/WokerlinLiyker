@@ -1,11 +1,8 @@
 # ninja log v6
 6	377	7891496022133421	CMakeFiles/WokerlinLiyker.dir/main.cpp.obj	6f029ded1c983af8
 378	708	7891496025856180	WokerlinLiyker.exe	16730fa446644243
-6	179	7893809008377664	build.ninja	c498253dec10463c
-9	82	7891497825784564	CMakeFiles/WokerlinLiyker_Windows.dir/src/cJSON/cJSON.c.obj	c49a9f183805b562
-6	179	7893809008337213	G:/WokerlinLiyker/build/cmake_install.cmake	c498253dec10463c
-5	62	7893804043359931	CMakeFiles/WokerlinLiyker_Windows.dir/src/main.cpp.obj	5e5c76cc5aaaec16
-63	251	7893804043941410	G:/WokerlinLiyker/WokerlinLiyker_Windows.exe	3f361afeea82e472
+6	179	7893814314777735	build.ninja	c498253dec10463c
 15	119	7893809516235029	CMakeFiles/WokerlinLiyker_Windows.dir/src/cJSON/cJSON.c.obj	1498192499fe7df5
+6	179	7893814314722616	G:/WokerlinLiyker/build/cmake_install.cmake	c498253dec10463c
 6	1770	7893809516148570	CMakeFiles/WokerlinLiyker_Windows.dir/src/main.cpp.obj	c5e22e7a342c18e3
 1771	2751	7893809533798178	G:/WokerlinLiyker/WokerlinLiyker_Windows.exe	3f361afeea82e472
