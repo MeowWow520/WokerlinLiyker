@@ -32,7 +32,8 @@ add_executable(${TARGET}
                         )
 
 
-target_include_directories(${TARGET} PRIVATE 
+target_include_directories(${TARGET} PRIVATE
+                        "src/spdlog/include"
                         "src/cJSON/include"
                         )               
 
