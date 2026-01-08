@@ -12,6 +12,7 @@
 #include "spdlog/spdlog.h"
 
 
+
 class MainManager : public SITemplate<MainManager> {
     friend class SITemplate<MainManager>;
 

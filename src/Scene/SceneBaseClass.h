@@ -5,6 +5,7 @@
 #include <SDL.h>
 
 
+
 class SceneBaseClass {
 public:
     // 纯虚函数，派生类必须实现这些方法
