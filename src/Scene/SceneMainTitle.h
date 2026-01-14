@@ -3,6 +3,7 @@
 #ifndef SCENEMAINTITLE_H
 #define SCENEMAINTITLE_H
 #include <SDL.h>
+#include <spdlog/spdlog.h>
 #include "SceneBaseClass.h"
 
 
@@ -18,4 +19,5 @@ public:
     void Render() override; 
     void Clean() override;
 };
+
 #endif // !SCENEMAINTITLE_H

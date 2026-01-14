@@ -9,6 +9,7 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include "SITemplate.h"
+#include "../Scene/SceneBaseClass.h"
 #include "spdlog/spdlog.h"
 
 
@@ -22,17 +23,11 @@ public:
     ~MainManager();
     // 主应用程序运行函数
     int RunApplication(int argc, char** argv);
-
-
-protected:
+    void HandEvent(SDL_Event *Event);
+    void Update();
+    void Rander();
     // 关闭应用程序
     void Shutdown();
-    /** 设置日志输出级别
-     *  @param level 日志级别
-     *  @return 设置是否成功
-     *  @note 级别包括 trace, debug, info, warn, err, critical, off
-     */
-    bool SetLoggerLevel(spdlog::level::level_enum level);
     /** 断言失败处理函数
      *  @param Condition 断言条件，若为true则触发断言失败
      *  @param Message 断言失败时的提示信息
@@ -46,14 +41,17 @@ protected:
      *  @param running 运行状态
      */
     void SetIsRunning(bool running) { IsRunning = running; }
-    /** 打印私有变量状态
-     *  @note 仅用于调试
+    /** 切换场景
+     *  @param NewScene 新场景指针
      */
-    void PrintPrivateVariables() const;
-    /** SDL 事件轮询处理函数
-     *  @param Event SDL 事件对象引用
-     */
-    void SDLPullEvents(SDL_Event& Event);
+    void ChangeScene(SceneBaseClass* NewScene) {
+        if (CurrentScene != nullptr) {
+            CurrentScene->Clean();
+            delete CurrentScene;
+        }
+        CurrentScene = NewScene;
+        CurrentScene->Init();
+    }
 
 private:
     // 主循环控制变量
@@ -68,6 +66,7 @@ private:
 	SDL_Point PosCursor = { 0,0 };
     SDL_Window* SDLWindow = nullptr;
     SDL_Renderer* SDLRenderer = nullptr;
+    SceneBaseClass* CurrentScene = nullptr;
 
 };
 

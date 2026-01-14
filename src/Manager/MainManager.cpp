@@ -1,9 +1,12 @@
 #include "MainManager.h"
-
+#include "../Scene/SceneMainTitle.h"
 
 
 MainManager::MainManager() {
-    SetLoggerLevel(spdlog::level::info);
+    /** 设置日志输出级别
+     *  @note 级别包括 trace, debug, info, warn, err, critical, off
+     */
+    spdlog::set_level(spdlog::level::info);
     spdlog::info("MainManager initialized.");
 
     MainManager::AssertionFailure(!SDL_Init(SDL_INIT_EVERYTHING), u8"SDL");
@@ -38,31 +41,57 @@ MainManager::~MainManager() {
 }
 
 int MainManager::RunApplication(int argc, char** argv) {
-    (void)argc;
-    (void)argv;
+    (void)argc; (void)argv;
     // Main application loop
     spdlog::info("Application Started.");
     while (GetIsRunning()) {
-        MainManager::SDLPullEvents(SDLEvent);
-        
+        MainManager::HandEvent(&SDLEvent);
+        MainManager::Update();
+        MainManager::Rander();
     }
     return 0;
 }
 
-void MainManager::Shutdown() {
-    if (GetIsRunning()) {
-        spdlog::info("Application Shutting Down.");
-        IsRunning = false;
+void MainManager::HandEvent(SDL_Event *Event)  {
+    while (SDL_PollEvent(Event)) {
+        switch (Event->type) {
+        case SDL_QUIT:
+            spdlog::info("SDL_QUIT event received. Exiting main loop.");
+            MainManager::Shutdown();
+            break;
+        default:
+            if (CurrentScene)
+                CurrentScene->HandleEvents(Event);
+            else
+                spdlog::warn("No CurrentScene to handle events.");
+            break;
+        }
     }
 }
 
-bool MainManager::SetLoggerLevel(spdlog::level::level_enum level) {
-    try {
-        spdlog::set_level(level);
-        return true;
-    } catch (const spdlog::spdlog_ex& ex) {
-        spdlog::error("Log level set failed: {}", ex.what());
-        return false;
+void MainManager::Update() {
+    if (CurrentScene) {
+        CurrentScene->Update();
+    } else {
+        SDL_Delay(1); // yield CPU when no scene is set
+    }
+}
+
+void MainManager::Rander() {
+    SDL_RenderClear(SDLRenderer);
+    if (CurrentScene)
+        CurrentScene->Render();
+    else
+        spdlog::warn("No CurrentScene to render.");
+    SDL_RenderPresent(SDLRenderer);
+}
+
+
+
+void MainManager::Shutdown() {
+    if (GetIsRunning()) {
+        spdlog::info("Application Shutting Down.");
+        SetIsRunning(false);
     }
 }
 
@@ -71,30 +100,4 @@ void MainManager::AssertionFailure(bool Condition, const char* Message) {
         spdlog::info("Assertion passed. {} loaded successfully.", Message);
     else 
         spdlog::error("Assertion failed! {} failed to load.", Message);
-}
-
-void MainManager::PrintPrivateVariables() const {
-    spdlog::trace("IsRunning: {}", IsRunning);
-    spdlog::trace("WindowWidth: {}", WindowWidth);
-    spdlog::trace("WindowHeight: {}", WindowHeight);
-    spdlog::trace("IsPrintMouseMove: {}", IsPrintMouseMove);
-}
-
-void MainManager::SDLPullEvents(SDL_Event& Event) {
-    while (SDL_PollEvent(&Event)) {
-        switch (Event.type) {
-        case SDL_QUIT:
-            spdlog::info("SDL_QUIT event received. Exiting main loop.");
-            SetIsRunning(false);
-            break;
-        case SDL_MOUSEMOTION:
-            PosCursor.x = Event.motion.x;
-            PosCursor.y = Event.motion.y;
-            if (IsPrintMouseMove)
-                spdlog::trace("Mouse moved to ({}, {})", Event.motion.x, Event.motion.y);
-            break;
-        default:
-            break;
-        }
-    }
 }

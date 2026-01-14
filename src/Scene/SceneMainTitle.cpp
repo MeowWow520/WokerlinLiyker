@@ -2,17 +2,14 @@
 
 
 
-SceneMainTitle::SceneMainTitle() {
-}
+SceneMainTitle::SceneMainTitle() {}
 
-SceneMainTitle::~SceneMainTitle() {
-}
+SceneMainTitle::~SceneMainTitle() {}
 
 void SceneMainTitle::Init() {
 }
 
 void SceneMainTitle::HandleEvents(SDL_Event* Event) {
-    
 }
 
 void SceneMainTitle::Update() {
