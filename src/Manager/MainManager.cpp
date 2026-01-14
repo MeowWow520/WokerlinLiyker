@@ -26,10 +26,15 @@ MainManager::MainManager() {
         SDL_RENDERER_PRESENTVSYNC | 
         SDL_RENDERER_TARGETTEXTURE);
 	MainManager::AssertionFailure(SDLRenderer, u8"SDL Renderer");
-
+    
+    spdlog::info("Created new CurrentScene.");
+    CurrentScene = new SceneMainTitle();
 }
 
 MainManager::~MainManager() {
+    if (CurrentScene != nullptr) {
+        CurrentScene->Clean();
+        delete CurrentScene; }
     SDL_DestroyRenderer(SDLRenderer);
 	SDL_DestroyWindow(SDLWindow);
 	TTF_Quit();
@@ -42,6 +47,7 @@ MainManager::~MainManager() {
 
 int MainManager::RunApplication(int argc, char** argv) {
     (void)argc; (void)argv;
+
     // Main application loop
     spdlog::info("Application Started.");
     while (GetIsRunning()) {
@@ -49,6 +55,7 @@ int MainManager::RunApplication(int argc, char** argv) {
         MainManager::Update();
         MainManager::Rander();
     }
+    
     return 0;
 }
 
@@ -60,10 +67,10 @@ void MainManager::HandEvent(SDL_Event *Event)  {
             MainManager::Shutdown();
             break;
         default:
-            if (CurrentScene)
-                CurrentScene->HandleEvents(Event);
-            else
+            if (CurrentScene == nullptr) {
                 spdlog::warn("No CurrentScene to handle events.");
+                return; }
+            CurrentScene->HandleEvents(Event);
             break;
         }
     }
@@ -79,13 +86,14 @@ void MainManager::Update() {
 
 void MainManager::Rander() {
     SDL_RenderClear(SDLRenderer);
+
     if (CurrentScene)
         CurrentScene->Render();
     else
         spdlog::warn("No CurrentScene to render.");
+        
     SDL_RenderPresent(SDLRenderer);
 }
-
 
 
 void MainManager::Shutdown() {

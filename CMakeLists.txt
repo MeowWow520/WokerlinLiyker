@@ -32,6 +32,7 @@ add_executable(${TARGET}
                         "src/Manager/MainManager.cpp"
                         "src/Scene/SceneBaseClass.h"
                         "src/Scene/SceneMainTitle.cpp"
+                        "src/Object.h"
                         )
 
 

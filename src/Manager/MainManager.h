@@ -26,6 +26,7 @@ public:
     void HandEvent(SDL_Event *Event);
     void Update();
     void Rander();
+
     // 关闭应用程序
     void Shutdown();
     /** 断言失败处理函数
