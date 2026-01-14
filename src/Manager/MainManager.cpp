@@ -2,6 +2,7 @@
 #include "../Scene/SceneMainTitle.h"
 
 
+
 MainManager::MainManager() {
     /** 设置日志输出级别
      *  @note 级别包括 trace, debug, info, warn, err, critical, off
@@ -50,7 +51,7 @@ int MainManager::RunApplication(int argc, char** argv) {
 
     // Main application loop
     spdlog::info("Application Started.");
-    while (GetIsRunning()) {
+    while (IsRunning) {
         MainManager::HandEvent(&SDLEvent);
         MainManager::Update();
         MainManager::Rander();
@@ -64,7 +65,7 @@ void MainManager::HandEvent(SDL_Event *Event)  {
         switch (Event->type) {
         case SDL_QUIT:
             spdlog::info("SDL_QUIT event received. Exiting main loop.");
-            MainManager::Shutdown();
+            IsRunning = false;
             break;
         default:
             if (CurrentScene == nullptr) {
@@ -93,14 +94,6 @@ void MainManager::Rander() {
         spdlog::warn("No CurrentScene to render.");
         
     SDL_RenderPresent(SDLRenderer);
-}
-
-
-void MainManager::Shutdown() {
-    if (GetIsRunning()) {
-        spdlog::info("Application Shutting Down.");
-        SetIsRunning(false);
-    }
 }
 
 void MainManager::AssertionFailure(bool Condition, const char* Message) {
